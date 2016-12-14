@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Grid Template for Bootstrap</title>
+
+    <!-- CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+	<link href="css/customizado.css" rel="stylesheet">
+	<link href="css/grid.css" rel="stylesheet">
+    
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">   
+    
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->    
+    <script language="JavaScript" type="text/javascript" src="js/jquery-3.1.js"></script>
+    <script language="JavaScript" type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script language="JavaScript" type="text/javascript" src="js/functions.js"></script>   
+    <script src="js/json.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/config.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	
+
+</head>
+<body>
+
+<table class="table2" align="center">
+  <tr>
+    <th>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 corTopo">
+                            <a href="index.html" class="navbar-brand topoPadding">
+                                <img src="img/logo2.png" width="142">
+                            </a>
+                 </div>
+				<!--  Topo  -->
+				<div class="col-md-12 espacamento">
+                
+				<div class="col-md-1 ">                                
+					<p>
+                        <img src="img/ico-user.png" alt="" align="center">
+                        <br>Colaboradores
+                    </p>
+				</div>
+                <div class="col-md-1 ">
+					<p>
+						<img src="img/ico-phone.png" alt="" align="center">
+						<br>Empresas
+					</p>
+                </div>                                                                     
+				<div class="col-md-2"></div>
+				<div class="col-md-2"></div> 
+				<div class="col-md-6"></div> 
+				
+				</div>
+			</div>					
+        </div>
+        
+        <!-- Tabela do Formulário -->		
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="container" >
+                        <div class="row tamanhoRow" bgcolor="White"> 
+                            <div class="col-md-12"style="color:#54A4E1; background: white; padding: 15px">
+                                <span aria-hidden="true">Colaboradores  <a href="#frmCadastro" type="button" data-toggle="modal" id="teste"><img src="img/ico-add.png" alt="" align="center"></a><input type="text" class="form-control newForm" placeholder="Filtrar" aria-describedby="sizing-addon3">                            
+                                </span>
+                            </div>
+                            <!-- Cabeçalho da tabela - Um bom treinamento pratico me traria melhores resultados -->
+                            <div class="col-md-12 corTabela">
+                                <table class="table"> 
+                                    <tr>
+                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nome</td>
+                                        <td colspan="2">Empresa</td>                                    
+                                    </tr>
+                                </table>
+                            </div>
+                            <!-- List group -->
+                            <div class="col-md-12 corTabela">
+                                <table class="table table-striped" id="listTable">                                
+								<script src="js/main.js"></script> 
+							</table>
+                            <div id="pageNav" style="float: right"></div>
+                                <!--Essa função não sei por qual motivo mas ela não aceitou ser colocada fora desta DIV-->
+                                <script>
+                                    var pager = new Pager('listTable', 4);
+                                    pager.init();
+                                    pager.showPageNav('pager', 'pageNav');
+                                    pager.showPage(1); 
+                                    show_table(listTable)
+                                </script> 
+                            </div>                                                          
+                        </div>
+                    </div>
+						
+                        <!-- Painel Modal para cadastro e alteração de cliente -->
+                            <div class="modal fade" id="frmCadastro" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header espacamento" >                                            
+                                            <a href="index.html" class="navbar-brand" style="padding: 10px 70px 0px">
+                                                <img src="img/logo2.png" width="142">
+                                            </a>
+                                            <h4 class="modal-title cabecalhoCadastro" id="myModalLabel">Cadastro do Colaborador</h4><br>
+                                        </div>
+                                        
+                                        <div class="modal-body">
+                                            <div class="container-fluid">
+												<div class="form formPadding">
+													<div class="form-group">
+														<input type="text" class="form-control" id="nome" placeholder="Nome">
+													</div>
+													<div class="form-group">
+														<input type="text" class="form-control" id="empresa" placeholder="Empresa">
+													</div>
+													<span id="btnUpdate" style="display: none;">
+													<span id="inputIDUpdate"></span>
+														<button onclick="updateData();" class="btn btn-default">Salvar</button>
+														<button onclick="resetForm();" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+													</span>
+													<span id="btnAdd">
+														<button onclick="addData();" class="btn btn-default">Adicionar</button>
+														<button onclick="resetForm();" class="btn btn-default">Limpar</button>
+														<button onclick="deleteList();" class="btn btn-default">Apagar</button>
+													</span>
+                                                </div>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>			 
+											</div>                                        
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+        </div>
+	</th>		
+  </tr>  
+</table>
+    
+
+    
+    
+</body>
+</html>
